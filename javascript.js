@@ -1,8 +1,9 @@
-const anagrammes = (stringA, stringB) => {
-	if(.lenngth == stringB.length){
+const anagrams = (stringA, stringB) => {
+	
+	if(stringA.lenngth == stringB.length){
 		let var1 = stringA.split('').sort().join('');
 		let var2 = stringB.split('').sort().join('');
-		
+	
 		return (s1 === s2);
 	}
 	return false;
@@ -23,6 +24,26 @@ const anagrammes = (stringA, stringB) => {
 
 
 class Stack {
+	
+	constructor() {
+	this.out = -1;
+	this.first = -1;
+	this.tab = new Array();
+  }
+	
+	push(n){
+
+		this.tab.push(n);
+	}
+	
+	peek() {
+		return this.tab[this.first];
+	}
+	
+	pop(){
+		
+		return this.tab.pop();
+	}
 	
 	
 /**
@@ -46,6 +67,25 @@ class Stack {
 
 
 const fizzBuzz = (n) => {
+	
+	for(cpt = 1; cpt <= n; cpt++){
+		
+		if( cpt%3 != 0 &&  cpt%5 != 0){
+			console.log(cpt);
+		}
+		else {
+			if(cpt%3 == 0 && cpt%5 == 0){
+				console.log('fizzbuzz');
+			} else {
+				if(cpt%3 == 0){
+					console.log('fizz');
+				}
+				if(cpt%5 == 0){
+					console.log('buzz');
+				}
+			}
+		}
+	}		
 /**
  * Affiche les nombres de 1 à n, en remplaçant les multiples de 3 par fizz et 
  * les multiples de 5 par buzz
@@ -63,7 +103,34 @@ const fizzBuzz = (n) => {
 };
 
 const spirale = (n) => {
-/**
+	
+	let i = 1;
+	
+	let x = new Array(n);
+	
+	for (i=0; i < n; i++){
+		  x[i] = new Array(n);
+	}
+	
+	for( cpt = 0; cpt < n; cpt++){
+		x[cpt][cpt2] = i;
+		i++;	
+	}
+	
+	for(cpt = 1;cpt < n; cpt++){
+		x[cpt][n-1] = i;
+		i++;
+	}
+	
+	for(cpt = n-1;cpt > 0; cpt--){
+		x[n-1][n-1] = i;
+		i++;
+	}
+	
+	
+	return x;
+	
+/**}
  * Retourne une matrice spirale de taille n x n.
  *
  * Exemples :
@@ -119,6 +186,6 @@ module.exports = {
   fizzBuzz,
   puissance4,
   spirale,
-  anagrammes,
+  anagrams,
   Stack
 }
